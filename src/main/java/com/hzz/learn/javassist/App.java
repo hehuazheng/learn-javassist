@@ -16,7 +16,7 @@ public class App {
 		ClassPool pool = ClassPool.getDefault();
 		String newClassName = "test";
 		CtClass cc = pool.makeClass(newClassName);
-		cc.setSuperclass(pool.get("com.hzz.learn.javassist.SuperInterface"));
+		cc.setSuperclass(pool.get(SuperInterfaceImpl.class.getName()));
 		CtConstructor ctor = CtNewConstructor.make("public " + newClassName
 				+ "(){}", cc);
 		cc.addConstructor(ctor);
