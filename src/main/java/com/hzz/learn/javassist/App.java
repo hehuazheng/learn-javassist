@@ -23,6 +23,8 @@ public class App {
 		CtMethod mthd = CtNewMethod.make(
 				"public String dosth() {return \"hzz\";}", cc);
 		cc.addMethod(mthd);
+		CtMethod mthd2 = CtNewMethod.make("public void tt(){}",cc);
+		cc.addMethod(mthd2);
 		Class<?> clazz = cc.toClass();
 		SuperInterface si = (SuperInterface) clazz.newInstance();
 		System.out.println(si.dosth());

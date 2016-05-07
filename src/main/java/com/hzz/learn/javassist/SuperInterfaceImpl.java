@@ -1,6 +1,8 @@
 package com.hzz.learn.javassist;
 
-public class SuperInterfaceImpl implements SuperInterface {
+public abstract class SuperInterfaceImpl implements SuperInterface {
+	abstract void tt();
+	
 	@Override
 	public String dosth() {
 		return "impl;";
