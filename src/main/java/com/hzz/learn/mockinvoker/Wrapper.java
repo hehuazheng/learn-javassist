@@ -30,7 +30,11 @@ public abstract class Wrapper {
 		Method[] ms = clazz.getDeclaredMethods();
 		for (Method m : ms) {
 			sb.append("if(\"" + m.getName() + "\".equals($2)) {");
-			sb.append("return w." + m.getName() + "($4[0]);}");
+			if (m.getReturnType() == void.class) {
+				sb.append("w." + m.getName() + "();}");
+			} else {
+				sb.append("return w." + m.getName() + "($4[0]);}");
+			}
 		}
 		sb.append("return null; }");
 		return sb.toString();
@@ -39,7 +43,9 @@ public abstract class Wrapper {
 	public static void main(String[] args) throws Exception {
 		ServiceAImpl sai = new ServiceAImpl();
 		Wrapper w = Wrapper.getWrapper(ServiceAImpl.class);
-		System.out.println(w.invokeMethod(sai, "dosth", null,
-				new Object[] { "someone like you" }));
+		 w.invokeMethod(sai, "voidMethod", null, null);
+		// System.out.println(w.invokeMethod(sai, "dosth", null,
+		// new Object[] { "someone like you" }));
 	}
+
 }

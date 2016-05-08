@@ -7,4 +7,9 @@ public class ServiceAImpl implements ServiceA {
 		return "ServiceAImpl.dosth called";
 	}
 
+	@Override
+	public void voidMethod() {
+		System.out.println("void method invoked.");
+	}
+
 }
